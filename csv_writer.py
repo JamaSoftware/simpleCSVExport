@@ -1,5 +1,7 @@
 import codecs
 import csv
+import os
+
 from BeautifulSoup import BeautifulSoup
 
 import cStringIO
@@ -96,6 +98,7 @@ class UnicodeWriter:
         data = self.encoder.encode(data)
         originalData = data
         data = ''.join(BeautifulSoup(data).findAll(text=True))
+        data = data.replace(os.linesep, "")
         data = self.encoder.encode(data)
 
 
